@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <title>Unity WebGL Player | PixelloraDev</title>
+    <title>Unity WebGL Player | MoveNet</title>
     <link rel="shortcut icon" href="TemplateData/favicon.ico">
     <link rel="stylesheet" href="TemplateData/style.css">
   </head>
@@ -20,7 +20,7 @@
       <div id="unity-footer">
         <div id="unity-webgl-logo"></div>
         <div id="unity-fullscreen-button"></div>
-        <div id="unity-build-title">PixelloraDev</div>
+        <div id="unity-build-title">MoveNet</div>
       </div>
     </div>
     <script>
@@ -57,19 +57,19 @@
       }
 
       var buildUrl = "Build";
-      var loaderUrl = buildUrl + "/WebGL.loader.js";
+      var loaderUrl = buildUrl + "/build.loader.js";
       var config = {
-        dataUrl: buildUrl + "/5102ff26955aca99ff64dc1fc0ab5412.data",
-        frameworkUrl: buildUrl + "/d41d8cd98f00b204e9800998ecf8427e.js",
-        codeUrl: buildUrl + "/d5e68ddac7bfbcc804623c96f74cf91a.wasm",
+        dataUrl: buildUrl + "/build.data",
+        frameworkUrl: buildUrl + "/build.framework.js",
+        codeUrl: buildUrl + "/build.wasm",
         streamingAssetsUrl: "StreamingAssets",
-        companyName: "Technine",
-        productName: "PixelloraDev",
-        productVersion: "0.6.0",
+        companyName: "NatML",
+        productName: "MoveNet",
+        productVersion: "0.1",
         showBanner: unityShowBanner,
       };
 
-      // By default Unity keeps WebGL canvas render target size matched with
+      // By default, Unity keeps WebGL canvas render target size matched with
       // the DOM size of the canvas element (scaled by window.devicePixelRatio)
       // Set this to false if you want to decouple this synchronization from
       // happening inside the engine, and you would instead like to size up
