@@ -1,2 +1,1 @@
-Technine/Overrides/Asset/HZJ_Idle_Video.mp4
 Technine/Overrides/Asset/Running_animation_ver_2.mp4
