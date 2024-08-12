@@ -1,1 +1,3 @@
+Overrides/Asset/GameCatchThing
 Overrides/Asset/GameHorizontalJump
+Overrides/Asset/TGGameHorizontalJump

@@ -137,6 +137,13 @@
     <type fullname="Technine.MiniGame.Pages.GamePlay.PageGameWhackAMole.PageGameWhackAMole" preserve="all" />
     <type fullname="Technine.MiniGame.Pages.GamePlay.PageGameWhackAMole.PoseTrackingFollower" preserve="all" />
     <type fullname="Technine.MiniGame.Pages.GamePlay.PageGameWhackAMole.SpotElement" preserve="all" />
+    <type fullname="Technine.MiniGame.Pages.GamePlay.PageTGGameHorizontalJump.GameItems.CollectableItem" preserve="all" />
+    <type fullname="Technine.MiniGame.Pages.GamePlay.PageTGGameHorizontalJump.GameItems.ObstacleItem" preserve="all" />
+    <type fullname="Technine.MiniGame.Pages.GamePlay.PageTGGameHorizontalJump.PageTGFinish" preserve="all" />
+    <type fullname="Technine.MiniGame.Pages.GamePlay.PageTGGameHorizontalJump.PageTGGameHorizontalJump" preserve="all" />
+    <type fullname="Technine.MiniGame.Pages.GamePlay.PageTGGameHorizontalJump.PageTGIdle" preserve="all" />
+    <type fullname="Technine.MiniGame.Pages.GamePlay.PageTGGameHorizontalJump.Script.PlayerMain" preserve="all" />
+    <type fullname="Technine.MiniGame.Pages.GamePlay.PageTGGameHorizontalJump.SpritesheetHelper.SpriteDebugger" preserve="all" />
     <type fullname="Technine.MiniGame.Pages.General.PageBasic" preserve="all" />
     <type fullname="Technine.MiniGame.Pages.General.PageIdle" preserve="all" />
     <type fullname="Technine.MiniGame.Pages.General.PageTnC" preserve="all" />
@@ -323,6 +330,7 @@
     <type fullname="MoreMountains.Feedbacks.MMF_Sound" preserve="nothing" serialized="true" />
   </assembly>
   <assembly fullname="MoreMountains.Feedbacks.TextMeshPro">
+    <type fullname="MoreMountains.Feedbacks.MMF_TMPAlpha" preserve="nothing" serialized="true" />
     <type fullname="MoreMountains.Feedbacks.MMF_TMPColor" preserve="nothing" serialized="true" />
   </assembly>
   <assembly fullname="MoreMountains.Feedbacks.URP">
