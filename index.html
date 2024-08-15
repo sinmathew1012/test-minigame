@@ -6,6 +6,13 @@
     <title>Unity WebGL Player | Pixellora</title>
     <link rel="shortcut icon" href="TemplateData/favicon.ico">
     <link rel="stylesheet" href="TemplateData/style.css">
+    <style>
+      /* Set max width for canvas */
+      #unity-canvas {
+        max-width: 1080px;
+        max-height: 1920px;
+      }
+    </style>
   </head>
   <body>
     <div id="unity-container" class="unity-desktop">
@@ -17,20 +24,25 @@
         </div>
       </div>
       <div id="unity-warning"> </div>
-      <!-- <div id="unity-footer">
-        <div id="unity-webgl-logo"></div>
-        <div id="unity-fullscreen-button"></div>
-        <div id="unity-build-title">Pixellora</div>
-      </div> -->
     </div>
+    <textarea id="clipboard"></textarea>
     <script>
 
       var container = document.querySelector("#unity-container");
       var canvas = document.querySelector("#unity-canvas");
       var loadingBar = document.querySelector("#unity-loading-bar");
       var progressBarFull = document.querySelector("#unity-progress-bar-full");
-      // var fullscreenButton = document.querySelector("#unity-fullscreen-button");
       var warningBanner = document.querySelector("#unity-warning");
+
+      var gameInstance = null
+      let params = location.href.split('?')[1].split('&');
+      data = {};
+      for (x in params) {
+        data[params[x].split('=')[0]] = params[x].split('=')[1];
+      }
+      function onBootstrapFinished(){
+        gameInstance?.SendMessage('TelegramHTMLController', 'SetUserInfo', JSON.stringify(data));
+      }
 
       // Shows a temporary message banner/ribbon for a few seconds, or
       // a permanent error message on top of the canvas if type=='error'.
@@ -59,9 +71,9 @@
       var buildUrl = "Build";
       var loaderUrl = buildUrl + "/a0eb54968f12b724932ff61ec1f2137c.loader.js";
       var config = {
-        dataUrl: buildUrl + "/4bcf23ff7ad12c9313f53c5906e6cfc9.data",
-        frameworkUrl: buildUrl + "/d7ae918a92755a7552bd64362cbfbf67.framework.js",
-        codeUrl: buildUrl + "/a7642b224d32a8409773270f96faee41.wasm",
+        dataUrl: buildUrl + "/892eaddc92b81a71c9acbfd8ff6cd706.data",
+        frameworkUrl: buildUrl + "/9102c3d11c8452a06fb1d36e7b2915fa.framework.js",
+        codeUrl: buildUrl + "/408fa0cba4d369a78999a071ed38d4be.wasm",
         streamingAssetsUrl: "StreamingAssets",
         companyName: "Technine",
         productName: "Pixellora",
@@ -93,9 +105,9 @@
 
       } else {
         // Desktop style: Render the game canvas in a window that can be maximized to fullscreen:
-
-        canvas.style.width = "1080px";
-        canvas.style.height = "1920px";
+        canvas.style.width = "100%";
+        // canvas.style.height = "1920px";
+        canvas.style.height = "100vh";
       }
 
       loadingBar.style.display = "block";
@@ -106,15 +118,8 @@
         createUnityInstance(canvas, config, (progress) => {
           progressBarFull.style.width = 100 * progress + "%";
               }).then((unityInstance) => {
+                gameInstance = unityInstance;
                 loadingBar.style.display = "none";
-// #if SHOW_DIAGNOSTICS
-//                 diagnostics_icon.onclick = () => {
-//                   unityDiagnostics.openDiagnosticsDiv(unityInstance.GetMemoryInfo);
-//                 };
-// #endif
-                // fullscreenButton.onclick = () => {
-                //   unityInstance.SetFullscreen(1);
-                // };
               }).catch((message) => {
                 alert(message);
               });
