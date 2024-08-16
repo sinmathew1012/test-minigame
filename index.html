@@ -11,6 +11,10 @@
       #unity-canvas {
         max-width: 1080px;
         max-height: 1920px;
+        z-index: 1;
+      }
+      #test_link{
+        z-index: 100;
       }
     </style>
   </head>
@@ -155,6 +159,6 @@
       document.body.appendChild(script);
       
     </script>
-    <a href="https://google.com" target="_blank" style="display: inline-block; padding: 10px 20px; background-color: #4CAF50; color: white; text-decoration: none; border-radius: 5px;">Exit Game</a>
+    <a id="test_link" href="https://google.com" target="_blank" style="display: inline-block; padding: 10px 20px; background-color: #4CAF50; color: white; text-decoration: none; border-radius: 5px;">Exit Game</a>
   </body>
 </html>
