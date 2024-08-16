@@ -43,7 +43,8 @@
         gameInstance?.SendMessage('TelegramHTMLController', 'SetUserInfo', JSON.stringify(data));
       }
       function redirectToUrl() {
-        window.location.assign("https://live4well-sweat-program-web-develop.technine.com.hk/");
+        // window.location.assign("https://live4well-sweat-program-web-develop.technine.com.hk/");
+        window.open("https://live4well-sweat-program-web-develop.technine.com.hk/", "_blank");
       }
       function tryCopyToClipboard(text) {
         var text = UTF8ToString(text);
