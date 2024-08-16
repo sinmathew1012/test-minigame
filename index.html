@@ -16,6 +16,12 @@
       #test_link{
         position: absolute;
         z-index: 100;
+        display: inline-block; 
+        padding: 10px 20px; 
+        background-color: #4CAF50; 
+        color: white; 
+        text-decoration: none; 
+        border-radius: 5px;
       }
     </style>
   </head>
@@ -30,6 +36,8 @@
       </div>
       <div id="unity-warning"> </div>
     </div>
+    <!-- <a id="test_link" href="https://google.com" target="_blank" style="display: inline-block; padding: 10px 20px; background-color: #4CAF50; color: white; text-decoration: none; border-radius: 5px;">Exit Game</a> -->
+
     <script>
 
       var container = document.querySelector("#unity-container");
@@ -46,10 +54,19 @@
       }
       function onBootstrapFinished(){
         gameInstance?.SendMessage('TelegramHTMLController', 'SetUserInfo', JSON.stringify(data));
+        var hyperlink = document.createElement('a');
+        hyperlink.href = "https://live4well-sweat-program-web-develop.technine.com.hk/";
+        hyperlink.target = "_blank";
+        hyperlink.id = "test_link";
       }
       function redirectToUrl() {
         // window.location.assign("https://live4well-sweat-program-web-develop.technine.com.hk/");
-        window.open("https://live4well-sweat-program-web-develop.technine.com.hk/", "_blank");
+        // window.open("https://live4well-sweat-program-web-develop.technine.com.hk/", "_blank");
+        
+        // var hyperlink = document.createElement('a');
+        // hyperlink.href = "https://live4well-sweat-program-web-develop.technine.com.hk/";
+        // hyperlink.target = "_blank";
+        // hyperlink.id = "test_link";
       }
       function tryCopyToClipboard(text) {
         var text = UTF8ToString(text);
@@ -160,6 +177,5 @@
       document.body.appendChild(script);
       
     </script>
-    <a id="test_link" href="https://google.com" target="_blank" style="display: inline-block; padding: 10px 20px; background-color: #4CAF50; color: white; text-decoration: none; border-radius: 5px;">Exit Game</a>
   </body>
 </html>
