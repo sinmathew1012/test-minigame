@@ -14,14 +14,15 @@
         z-index: 1;
       }
       #test_link{
-        position: absolute;
-        z-index: 100;
-        display: inline-block; 
-        padding: 10px 20px; 
-        background-color: #4CAF50; 
-        color: white; 
-        text-decoration: none; 
-        border-radius: 5px;
+          width: 100%;
+          height: 100%;
+          opacity: 0;
+          position: absolute;
+          z-index: 100;
+          display: inline-block;
+          background-color: #4CAF50;
+          color: white;
+          text-decoration: none;
       }
     </style>
   </head>
@@ -36,8 +37,6 @@
       </div>
       <div id="unity-warning"> </div>
     </div>
-    <!-- <a id="test_link" href="https://google.com" target="_blank" style="display: inline-block; padding: 10px 20px; background-color: #4CAF50; color: white; text-decoration: none; border-radius: 5px;">Exit Game</a> -->
-
     <script>
 
       var container = document.querySelector("#unity-container");
@@ -54,21 +53,20 @@
       }
       function onBootstrapFinished(){
         gameInstance?.SendMessage('TelegramHTMLController', 'SetUserInfo', JSON.stringify(data));
-        var hyperlink = document.createElement('a');
-        hyperlink.href = "https://live4well-sweat-program-web-develop.technine.com.hk/?tg_user_id=e4P/MYyDZ07gC3zBnOcHvw==&game_name=testGame&bot_name=FarmsiteGameBot";
-        hyperlink.target = "_blank";
-        hyperlink.id = "test_link";
-        document.body.appendChild(hyperlink);
       }
       function redirectToUrl() {
-        // window.location.assign("https://live4well-sweat-program-web-develop.technine.com.hk/");
-        // window.open("https://live4well-sweat-program-web-develop.technine.com.hk/", "_blank");
-        
-        // var hyperlink = document.createElement('a');
-        // hyperlink.href = "https://live4well-sweat-program-web-develop.technine.com.hk/";
-        // hyperlink.target = "_blank";
-        // hyperlink.id = "test_link";
+        // window.location.assign("https://live4well-sweat-program-web-develop.technine.com.hk/")
       }
+      
+      function createATag() {
+        var a = document.createElement('a');
+        a.href = "https://live4well-sweat-program-web-develop.technine.com.hk/";
+        a.id = "test_link";
+        a.target = "_blank";
+        document.body.appendChild(a);
+        a.click();
+      }
+      
       function tryCopyToClipboard(text) {
         var text = UTF8ToString(text);
 
@@ -121,9 +119,9 @@
       var buildUrl = "Build";
       var loaderUrl = buildUrl + "/a0eb54968f12b724932ff61ec1f2137c.loader.js";
       var config = {
-        dataUrl: buildUrl + "/a9f65e4b205a1393d1dad79867926716.data",
+        dataUrl: buildUrl + "/e8246284176e7986aea7e62563a48bc4.data",
         frameworkUrl: buildUrl + "/94e0471f8389a5611c2ac9e3e5f5963c.framework.js",
-        codeUrl: buildUrl + "/565df3c422b8129c77500c18d8e753d2.wasm",
+        codeUrl: buildUrl + "/2bfac035e7a917e11fc45a7b438ff9ae.wasm",
         streamingAssetsUrl: "StreamingAssets",
         companyName: "Technine",
         productName: "Pixellora",
@@ -176,7 +174,6 @@
             };
 
       document.body.appendChild(script);
-      
     </script>
   </body>
 </html>
