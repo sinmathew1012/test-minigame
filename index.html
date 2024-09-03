@@ -93,10 +93,10 @@
         // Copy the text
         try {
           document.execCommand('copy');
-          tg.showAlert("Message copied to clipboard!");
+          // tg.showAlert("Message copied to clipboard!");
         } catch (err) {
           console.error('Failed to copy text: ', err);
-          tg.showAlert("Failed to copy message. Please try again.");
+          // tg.showAlert("Failed to copy message. Please try again.");
         }
 
         // Remove the temporary textarea
