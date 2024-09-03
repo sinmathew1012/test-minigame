@@ -13,16 +13,18 @@
         max-height: 1920px;
         z-index: 1;
       }
-      #test_link{
-          width: 100%;
-          height: 100%;
-          opacity: 0;
-          position: absolute;
-          z-index: 100;
-          display: inline-block;
-          background-color: #4CAF50;
-          color: white;
-          text-decoration: none;
+
+      #test_link {
+        width: 100%;
+        height: 10%;
+        bottom: 18%;
+        opacity: 0;
+        position: absolute;
+        z-index: 100;
+        display: inline-block;
+        background-color: #4CAF50;
+        color: white;
+        text-decoration: none;
       }
     </style>
   </head>
@@ -54,67 +56,51 @@
       function onBootstrapFinished(){
         gameInstance?.SendMessage('TelegramHTMLController', 'SetUserInfo', JSON.stringify(data));
       }
-      function redirectToUrl(jsonData) {
-        // var data = JSON.parse(jsonData);
-        // if (navigator.share) {
-        //     navigator.share({
-        //         title: data.game_name,
-        //         text: `Check out this game: ${data.game_name}`,
-        //         url: `https://live4well-sweat-program-web-develop.technine.com.hk/?tg_user_id=${encodeURIComponent(data.tg_user_id)}&bot_name=${encodeURIComponent(data.bot_name)}`
-        //     }).catch(console.error);
-        // } else {
-        //     alert('Sharing is not supported on this browser.');
-        // }
+      function redirectToUrl() {
         // window.location.assign("https://live4well-sweat-program-web-develop.technine.com.hk/")
       }
       
-      function createATag(jsonData) {
-        var data = JSON.parse(jsonData);
-        if (navigator.share) {
-            navigator.share({
-                title: data.game_name,
-                text: `Check out this game: ${data.game_name}`,
-                url: `https://live4well-sweat-program-web-develop.technine.com.hk/?tg_user_id=${encodeURIComponent(data.tg_user_id)}&bot_name=${encodeURIComponent(data.bot_name)}`
-            }).catch(console.error);
-        } else {
-            alert('Sharing is not supported on this browser.');
-        }
-
-        // var data = JSON.parse(jsonData);
-        // var a = document.createElement('a');
-        // a.href = "https://live4well-sweat-program-web-develop.technine.com.hk/?" +
-        //         "tg_user_id=" + encodeURIComponent(data.tg_user_id) +
-        //         "&game_name=" + encodeURIComponent(data.game_name) +
-        //         "&bot_name=" + encodeURIComponent(data.bot_name);
-        // a.id = "test_link";
+      function quitGame(){
+        console.log("Quit Game: TODO send back-to-home message to react");
+      }
+      
+      function createATag() {
+        var user =  data
+        var a = document.createElement('a');
+        // a.href = "https://t.me/share/url?url=https://live4well-sweat-program-web-develop.technine.com.hk/";
+        a.id = "test_link";
+        var link = "https://live4well-sweat-program-web-develop.technine.com.hk/?" +
+                  "tg_user_id=" + encodeURIComponent(data.tg_user_id) +
+                  "&game_name=" + encodeURIComponent(data.game_name) +
+                  "&bot_name=" + encodeURIComponent(data.bot_name);
         // a.target = "_blank";
-        // document.body.appendChild(a);
+        document.body.appendChild(a);
+        document.getElementById('test_link').addEventListener('click', () => { window.open(link,"_blank") });
         // a.click();
       }
       
-      function tryCopyToClipboard(text) {
-        var text = UTF8ToString(text);
+      function copyToClipboard(message){
+        console.log("start Copy to clipboard");
+        // Create a temporary textarea element
+        const tempTextArea = document.createElement('textarea');
+        tempTextArea.value = message;
+        document.body.appendChild(tempTextArea);
 
-        // Create a temporary textarea to hold the text
-        var textarea = document.createElement('textarea');
-        textarea.value = text;
-        document.body.appendChild(textarea);
-        textarea.select();
-        textarea.setSelectionRange(0, 99999); // For mobile devices
+        // Select the text
+        tempTextArea.select();
+        tempTextArea.setSelectionRange(0, 99999); // For mobile devices
 
+        // Copy the text
         try {
-          var successful = document.execCommand('copy');
-          document.body.removeChild(textarea);
-
-          if (successful) {
-            SendMessage('CopyToClipboardController', 'CopySuccessCallback');
-          } else {
-            SendMessage('CopyToClipboardController', 'CopyFailureCallback');
-          }
+          document.execCommand('copy');
+          tg.showAlert("Message copied to clipboard!");
         } catch (err) {
-          document.body.removeChild(textarea);
-          SendMessage('CopyToClipboardController', 'CopyFailureCallback');
+          console.error('Failed to copy text: ', err);
+          tg.showAlert("Failed to copy message. Please try again.");
         }
+
+        // Remove the temporary textarea
+        document.body.removeChild(tempTextArea);
       }
       
       // Shows a temporary message banner/ribbon for a few seconds, or
@@ -144,9 +130,9 @@
       var buildUrl = "Build";
       var loaderUrl = buildUrl + "/a0eb54968f12b724932ff61ec1f2137c.loader.js";
       var config = {
-        dataUrl: buildUrl + "/10f7fbced48fc75f8cd04a51015f7a47.data",
-        frameworkUrl: buildUrl + "/a34c0a4a269951c30d8c3090636d2e64.framework.js",
-        codeUrl: buildUrl + "/f7063276e54f4073ac97cb4ca1f3725e.wasm",
+        dataUrl: buildUrl + "/d1077d5da73b845cd290354cebd06b6f.data",
+        frameworkUrl: buildUrl + "/c64c4fecc8ec448fa01f80cd15bbc989.framework.js",
+        codeUrl: buildUrl + "/d5753d6e51623d45fc7c6fc23d87b057.wasm",
         streamingAssetsUrl: "StreamingAssets",
         companyName: "Technine",
         productName: "Pixellora",
